@@ -1,0 +1,82 @@
+.logo-vertical {
+    display: flex;
+    align-items: center;
+    height: 125px;
+    width: 100%;
+    background-color: #0e0e3a;
+}
+
+.logo-vertical h1 {
+    color: white;
+    font-size: 16px;
+}
+
+.logo-vertical img {
+    width: 45px;
+    height: 45px;
+    margin: 0 10px;
+}
+
+.back-home-content {
+    padding: 24px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.back-header {
+    min-height: 80px;
+}
+
+.back-header-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.back-header-box .back-header-user {
+    position: absolute;
+    top: 10px;
+    height: 50px;
+    right: 20px;
+}
+
+.back-header-box .back-header-weather {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+.back-header-box .back-header-divider {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-bottom: 2px solid #2f934a;
+    bottom: 30px;
+}
+
+.card-header-button {
+    float: left;
+    width: 100px;
+    margin-left: 15px;
+}
+
+.blue-card {
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #3a63d2;
+    /*background-color: #2a5b0b;*/
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.green-card {
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #3f850d;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
