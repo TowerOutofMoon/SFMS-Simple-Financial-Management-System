@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# 项目介绍
+本项目代码作为hhu-cs-se课设内容，构建了一个简易的金融管理系统。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+我们的金融管理系统分为前台用户系统和后台管理系统，前台用户系统包括产品搜索、订单查询和产品购买三大功能；后台管理系统则主要完成产品与用户的管理功能，和对所有用户订单的查看功能。
 
-## Available Scripts
+除了订单和购物车功能外，所有的功能都已与后台连接，数据库字段包括：
 
-In the project directory, you can run:
+client(`c_id`, c_name, c_id_card, c_phone, c_mail, c_cred, c_password)
 
-### `npm start`
+bank_product(`bp_id`, `bp_name`, bp_online, bp_rate, bp_time)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+fund(`f_id`, `f_name`, f_type, risk_level, f_manager, f_amount)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+insurance(`i_id`, `i_name`, i_project, i_amount, i_year, i_crowd)
 
-### `npm test`
+financial_product(`fp_id`, `fp_name`, fp_description, fp_amount, fp_year)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+orders(`o_id, o_c_id, o_bp_id`)
 
-### `npm run build`
+property(`pro_id`, `pro_name`, pro_purchase_time, pro_stus, pro_quality, pro_income)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bank_card(`b_number`, `b_c_id`, b_type)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+deposit_card(`d_number`, d_amount, d_rate)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+credit_card(`cred_number`, cred_amount, cred_limit, cred_rate)
+> 注：灰色字段代表了一些完整性约束如主键、外键，可以从语义分析中得出，一些数值类型字段都附有CHECK触发器。
 
-### `npm run eject`
+![](../逻辑结构图.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+由于时间限制，本项目还有许多可以完善的地方，可以后续自行补充。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 文件目录结构
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+.idea为IDE自动创建的系统文件夹，lib、node_modules都是引入的依赖库，public包含了源网页，所有的组件都在源网页id为root的网页下面，server是我们的后台服务器，src中定义了前后台的各种组件和路由。
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+src目录是各个组件的路径，从上到下，actions文件夹定义了前后台的交互请求操作，Components文件夹内是不同的前后台组件与路由，比如BackHome是后台的首页，FrontHome是前台的首页，而BackendRoutes和FrontendRoutes则分别是后台和前台的路由。
 
-## Learn More
+# 开发环境
+### 前端环境：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+交互逻辑与数据处理主要使用Facebook的 **React** 框架进行编写。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+在页面的跳转与层级关系的设计使用了 **React-router**。
 
-### Code Splitting
+页面的设计与构造基于阿里巴巴提供的 **Ant-Design** 组件库。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+前后端交互使用了基于Promise的 **Axios** 库。
 
-### Analyzing the Bundle Size
+### 后端环境：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+使用 **express** 框架搭建后台服务器，采用 **mysql** 作为数据库服务软件获取数据库服务，并通过 **mysql-connector-java** 与服务器进行连接。
 
-### Making a Progressive Web App
+前后端交互方面采用 **body-parser** 库解析请求头、响应头内容。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+使用 **http-proxy-middleware** 实现不同端口间的请求转发，整个项目运行于 **node.js** 和 **sdk** 运行环境下。
 
-### Advanced Configuration
+推荐使用 **IDEA** 作为IDE进行环境配置与代码书写。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# 运行命令
 
-### Deployment
+`npm start`：启动前端react项目。端口号为3000。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`node server.js`：启动后端服务器。监听端口号为5000。
